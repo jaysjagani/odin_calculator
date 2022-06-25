@@ -10,23 +10,32 @@ function createButton(button_class) {
     button.style.width = '100px';
     button.style.height = '100px';
     button.textContent = button_class;
+    button.addEventListener('click',updateDisplay);
     return button;
 }
 
 function addNumberButtons() {
     for(i = 9; i >= 0; i--) {
-        const button = createButton(`${i}`);
-        document.querySelector('.numbers').appendChild(button);   
+        document.querySelector('.numbers').appendChild(createButton(`${i}`));   
     }
 }
 
 function addOperationButtons() {
     document.querySelector('.operations').appendChild(createButton("/"));
-    document.querySelector('.operations').appendChild(createButton("x"));
+    document.querySelector('.operations').appendChild(createButton("*"));
     document.querySelector('.operations').appendChild(createButton("-"));
     document.querySelector('.operations').appendChild(createButton("+"));
     document.querySelector('.operations').appendChild(createButton("="));
+}
 
+function updateDisplay(e) {
+    const display =  document.querySelector('.display-input');
+    const element = e.target.className.charAt(e.target.className.length-1);
+    if(element == "=") {evaluate(display.textContent)}
+    display.innerHTML = display.textContent + element;
+}
+
+function evaluate() {
 
 }
 
