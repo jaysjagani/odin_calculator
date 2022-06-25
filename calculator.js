@@ -15,8 +15,8 @@ function createButton(button_class) {
 
 function addNumberButtons() {
     for(i = 9; i >= 0; i--) {
-        createButton("i");
-        document.querySelector('.numbers').appendChild(createButton(`${i}`));   
+        const button = createButton(`${i}`);
+        document.querySelector('.numbers').appendChild(button);   
     }
 }
 
@@ -30,5 +30,21 @@ function addOperationButtons() {
 
 }
 
+function operate(num1, num2, operation){
+    switch(operation) {
+        case "+":
+            return num1+num2;
+
+        case "-":
+            return num1-num2;
+ 
+        case "x":
+            return num1*num2;
+    
+        case "/":
+            return num1/num2;
+    }
+        
+}
 addNumberButtons();
 addOperationButtons();
